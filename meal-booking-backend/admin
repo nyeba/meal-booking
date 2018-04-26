@@ -1,1 +1,24 @@
-import unittest
+from flask import Flask
+from sqlalchemy import SQLAlchemy
+from flask_restful import Api
+from app.resources import Greeting
+
+import app_config
+
+DB = SQLAlchemy()
+
+def create_app(config_name):
+    
+
+    application = FlaskAPI(__name__, instance_relative_config=True)
+    application.config.from_object(app_config[config_name])
+    application.config.from_pyfile('config.py')
+    application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    DB.init_app(application)
+
+    api = Api(application, prefix="/api/v1")
+
+    # set up routes
+    api.add_resource(Greeting, '/greetings')
+
+    return application
