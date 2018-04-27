@@ -1,24 +1,20 @@
-from flask import Flask
-from sqlalchemy import SQLAlchemy
-from flask_restful import Api
-from app.resources import Greeting
+class User():
+    def user_login(self):
+        email="user@gmail.com"
+        User="password"
+        if password=valid:
+    "allow access"
+    else:deny
 
-import app_config
+   def user_signup(self):
+       input{
+           email="email"
+           name="name"
+           password:"password"
+           confirm"password retype>
+           if expression:
+               pass
+       }
 
-DB = SQLAlchemy()
 
-def create_app(config_name):
-    
 
-    application = FlaskAPI(__name__, instance_relative_config=True)
-    application.config.from_object(app_config[config_name])
-    application.config.from_pyfile('config.py')
-    application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    DB.init_app(application)
-
-    api = Api(application, prefix="/api/v1")
-
-    # set up routes
-    api.add_resource(Greeting, '/greetings')
-
-    return application
